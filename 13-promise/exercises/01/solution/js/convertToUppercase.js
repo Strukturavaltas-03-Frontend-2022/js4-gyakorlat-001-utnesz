@@ -15,15 +15,26 @@
 // export default convertToUppercase;
 
 
+//const convertToUppercase = (array) => {
+//        return new Promise((resolve, reject) => {
+//                if( array.some(item => typeof item == 'string')) {
+//                        resolve(array.map(modArray => modArray.toLocaleUpperCase()));
+//                } else {
+//                        reject("Error: Error: Not all items in the array are strings!");
+//                }
+//                });
+//        };
+//
+//export default convertToUppercase;
+
 const convertToUppercase = (array) => {
         return new Promise((resolve, reject) => {
-                if( !array.some(item => typeof item !== 'string')) {
-                    const modArray = array.map(item => item.toUpperCase());
-                        resolve(modArray);
+                if (array.every(item => typeof item == 'string')) {
+                        resolve(array.map(item2 => item2.toLocaleUpperCase()))
                 } else {
-                        reject("Error: Error: Not all items in the array are strings!");
+                        reject(new Error('Error: Not all items in the array are strings!'))
                 }
-                });
-        };
+        })
+}
 
 export default convertToUppercase;
